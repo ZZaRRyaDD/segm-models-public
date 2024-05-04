@@ -41,6 +41,7 @@ def safe_augmentations() -> List[A.DualTransform]:
         # D4 Augmentations
         A.RandomRotate90(p=1),
         A.Transpose(p=0.5),
+        A.RGBShift(b_shift_limit=(200, 2), p=1.0),
     ]
 
 
