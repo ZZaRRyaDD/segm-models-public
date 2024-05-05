@@ -5,6 +5,7 @@ from typing import Tuple, List
 __all__ = [
     "crop_transform",
     "safe_augmentations",
+    "safe_blue_augmentations",
     "light_augmentations",
     "medium_augmentations",
     "hard_augmentations",
@@ -37,6 +38,14 @@ def crop_transform_xview2(image_size: Tuple[int, int], min_scale=0.4, max_scale=
 
 
 def safe_augmentations() -> List[A.DualTransform]:
+    return [
+        # D4 Augmentations
+        A.RandomRotate90(p=1),
+        A.Transpose(p=0.5),
+    ]
+
+
+def safe_blue_augmentations() -> List[A.DualTransform]:
     return [
         # D4 Augmentations
         A.RandomRotate90(p=1),
@@ -146,6 +155,8 @@ def get_augmentations(augmentation: str, for_3ch_img=True) -> List[A.DualTransfo
         aug_transform = light_augmentations()
     elif augmentation == "safe":
         aug_transform = safe_augmentations()
+    elif augmentation == "safe_blue":
+        aug_transform = safe_blue_augmentations()
     else:
         aug_transform = []
 
