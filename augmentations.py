@@ -70,7 +70,7 @@ def medium_augmentations(for_3ch_img=True, mask_dropout=True) -> List[A.DualTran
         A.HorizontalFlip(),
         A.ShiftScaleRotate(scale_limit=0.1, rotate_limit=15, border_mode=cv2.BORDER_CONSTANT),
         # Add occasion blur/sharpening
-        A.OneOf([A.GaussianBlur(), A.IAASharpen(), A.NoOp()]),
+        A.OneOf([A.GaussianBlur(), A.Sharpen(), A.NoOp()]),
         # Spatial-preserving augmentations:
         A.OneOf([A.CoarseDropout(), A.NoOp()]), #  A.MaskDropout(max_objects=5) if mask_dropout else A.NoOp()
         A.GaussNoise(),
