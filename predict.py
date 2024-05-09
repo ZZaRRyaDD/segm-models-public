@@ -200,7 +200,7 @@ def main():
         os.makedirs(_output_path, exist_ok=exist_ok)
     os.makedirs(_output_plots_path, exist_ok=exist_ok)  # Создаем папку куда сохраним графики
 
-    _tile_size = args.tile_size
+    _tile_size = int(args.tile_size)
     _device = args.device
     _step = _tile_size  # шаг с которым идем по исходной картинке для вырезания тайлов
 
